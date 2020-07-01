@@ -1,0 +1,14 @@
+com\hx\auto\GeneratorUtil.class
+com\hx\auto\GeneratorMapperUtil.class
+com\hx\auto\common\JdbcType.class
+com\hx\auto\GeneratorReadXmlUtil.class
+com\hx\auto\common\UrlData.class
+com\hx\auto\util\CommonTool.class
+com\hx\auto\AutoDomeUtil.class
+com\hx\auto\GeneratorServiceUtil.class
+com\hx\auto\GeneratorUtil$1.class
+com\hx\auto\common\ReadEntityData.class
+com\hx\auto\common\Lob.class
+com\hx\auto\GeneratorDaoUtil.class
+com\hx\auto\GeneratorActionUtil.class
+com\hx\auto\common\ReadEntityData$FieldAttribute.class
