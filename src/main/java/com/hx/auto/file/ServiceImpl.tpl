@@ -12,6 +12,7 @@ import ${servicePack}.${classNameUP}Service;
 import com.hx.mybatisTool.SqlParam;
 import java.util.List;
 
+@Transactional
 @Service
 public class ${classNameUP}ServiceImpl implements ${classNameUP}Service {
 
