@@ -27,7 +27,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			select replace(uuid(),'-','') from dual
 		</selectKey>
 	    insert into ${fieldData.tableName} (${fieldData.tableIdName}<#list fieldData.fields as item>,${item.tableName}</#list>)
-	    values (${fieldData.entityIdName}<#list fieldData.fields as item>,${item.mybatisName}</#list>)
+	    values (${fieldData.entityIdData}<#list fieldData.fields as item>,${item.mybatisName}</#list>)
 	</insert>
 	<select id="selectList" resultMap="BaseResultMap" parameterType="com.hx.mybatisTool.SqlParam" >
 		select 

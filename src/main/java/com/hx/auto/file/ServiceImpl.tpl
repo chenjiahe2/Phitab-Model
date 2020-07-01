@@ -59,7 +59,7 @@ public class ${classNameUP}ServiceImpl implements ${classNameUP}Service {
 	public void add(${classNameUP} ${className}) {
 		Object count = ${className}Mapper.insert(${className});
 		if(count == null) {
-			throw new GlobalException("新增失败！");
+			throw new TipsException("新增失败！");
 		}
 	}
 	/**修改*/
@@ -67,7 +67,7 @@ public class ${classNameUP}ServiceImpl implements ${classNameUP}Service {
 	public void updateAll(${classNameUP} ${className}) {
 		int count = ${className}Mapper.updateAll(${className});
 		if(count!=1) {
-			throw new GlobalException("保存失败！");
+			throw new TipsException("保存失败！");
 		}
 	}
 	
@@ -76,7 +76,7 @@ public class ${classNameUP}ServiceImpl implements ${classNameUP}Service {
 	public void deleteOne(String delId) {
 		int count = ${className}Mapper.deleteById(delId);
 		if(count!=1) {
-			throw new GlobalException("删除失败！");
+			throw new TipsException("删除失败！");
 		}
 	}
 
