@@ -58,8 +58,8 @@ public class ${classNameUP}ServiceImpl implements ${classNameUP}Service {
     /**新增*/
 	@Override
 	public void add(${classNameUP} ${className}) {
-		Object count = ${className}Mapper.insert(${className});
-		if(count == null) {
+		int count = ${className}Mapper.insert(${className});
+		if(count != 1) {
 			throw new TipsException("新增失败！");
 		}
 	}
