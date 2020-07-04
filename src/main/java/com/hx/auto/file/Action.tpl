@@ -26,8 +26,7 @@ public class ${entityName}Controller extends CommonInit{
     public Result listData(Integer pageNum,Integer rowCount) {
         //pageNum当前第几页
         //rowCount 拿几条
-        //分页插件
-        PageInfo<${entityName}> pageInfo = null;
+
         //一页几条
         if(!SimpleTool.checkNotNull(rowCount)) {
             rowCount = 20;
@@ -36,9 +35,10 @@ public class ${entityName}Controller extends CommonInit{
         if(!SimpleTool.checkNotNull(pageNum)) {
             pageNum = 1;
         }
+        //分页插件
         PageHelper.startPage(pageNum,rowCount);
         List<${entityName}> ${entityNameSmall}s = service.selectList(sqlParam);
-        pageInfo = new PageInfo<${entityName}>(${entityNameSmall}s);
+        PageInfo<${entityName}> pageInfo = new PageInfo<${entityName}>(${entityNameSmall}s);
 		return Result.success(pageInfo);
     }
 	

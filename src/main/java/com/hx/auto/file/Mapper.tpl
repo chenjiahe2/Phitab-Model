@@ -51,14 +51,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select 
 			${fieldData.tableIdName}<#list fieldData.fields as item><#if item.isBlob==0>,${item.tableName}</#if></#list>
 		from ${fieldData.tableName}
-		    WHERE ${whereSentence}
+		    WHERE ${whereSentence} order by ${fieldData.tableIdName} desc
 			LIMIT 1
 	</select>
 	<select id="selectOneBlob" resultMap="BaseResultMap" parameterType="com.hx.mybatisTool.SqlParam" >
 		select 
 			${fieldData.tableIdName}<#list fieldData.fields as item>,${item.tableName}</#list>
 		from ${fieldData.tableName}
-			WHERE ${whereSentence}
+			WHERE ${whereSentence} order by ${fieldData.tableIdName} desc
 			LIMIT 1
 	</select>
 	<select id="selectOneByKey" resultMap="BaseResultMap" parameterType="java.lang.Object" >

@@ -58,11 +58,12 @@ public class ${classNameUP}ServiceImpl implements ${classNameUP}Service {
     /**新增*/
 	@Override
 	public void add(${classNameUP} ${className}) {
-		Object count = ${className}Mapper.insert(${className});
-		if(count == null) {
+		int count = ${className}Mapper.insert(${className});
+		if(count != 1) {
 			throw new TipsException("新增失败！");
 		}
 	}
+
 	/**修改*/
 	@Override
 	public void updateAll(${classNameUP} ${className}) {
@@ -71,6 +72,15 @@ public class ${classNameUP}ServiceImpl implements ${classNameUP}Service {
 			throw new TipsException("保存失败！");
 		}
 	}
+
+	/**修改*/
+    @Override
+    public void updateWhere(SqlParam sqlParam) {
+        int count = ${className}Mapper.updateWhere(sqlParam);
+        if(count!=1) {
+            throw new TipsException("保存失败！");
+        }
+    }
 	
 	/**删除一个*/
 	@Override

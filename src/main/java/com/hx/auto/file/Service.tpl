@@ -21,6 +21,8 @@ public interface ${classNameUP}Service {
 	void add(${classNameUP} ${className});
     
 	void updateAll(${classNameUP} ${className});
+
+	void updateWhere(SqlParam sqlParam);
     
 	void deleteOne(String delId);
 
