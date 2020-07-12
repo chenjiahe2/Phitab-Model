@@ -137,7 +137,8 @@ public class GeneratorMapperUtil {
         	
         	root.put("whereSentence","${whereSentence}");
         	root.put("updateSentence","${updateSentence}");
-        	
+        	root.put("sqlSentence","${sqlSentence}");
+
         	//dao的包名
         	if(!CommonTool.checkNotNull(urlData.getDaoUrl())) {
         		System.err.println("没有dao路径");

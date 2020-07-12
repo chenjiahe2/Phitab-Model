@@ -4,13 +4,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- namespace:该mapper.xml映射文件的 唯一标识 -->
 <mapper namespace="${DAOPackageName}.${entityName}Mapper">
-	<!-- 表与实体字段的映射 -->
-	<resultMap id="BaseResultMap" type="${packageEntityName}.${entityName}">
-		<id column="${fieldData.tableIdName}" jdbcType="${fieldData.keyType}" property="${fieldData.entityIdName}" />
-	<#list fieldData.fields as item>
-	    <result column="${item.tableName}" jdbcType="${item.dataType}" property="${item.entityName}"/>
-	</#list>
-  	</resultMap>
 
 	<!-- 整个实体类修改，表字段=实体类字段-->
 	<sql id="Update_Column_All">
@@ -29,53 +22,38 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    insert into ${fieldData.tableName} (${fieldData.tableIdName}<#list fieldData.fields as item>,${item.tableName}</#list>)
 	    values (${fieldData.entityIdData}<#list fieldData.fields as item>,${item.mybatisName}</#list>)
 	</insert>
-	<select id="selectList" resultMap="BaseResultMap" parameterType="com.hx.mybatisTool.SqlParam" >
-		select 
-			${fieldData.tableIdName}<#list fieldData.fields as item><#if item.isBlob==0>,${item.tableName}</#if></#list>
-		from ${fieldData.tableName}
-			WHERE ${whereSentence}
+	<select id="selectList" resultType="${packageEntityName}.${entityName}" parameterType="com.hx.mybatisTool.SqlParam" >
+		${sqlSentence}
 	</select>
-	<select id="selectListBlob" resultMap="BaseResultMap" parameterType="com.hx.mybatisTool.SqlParam" >
-		select 
-			${fieldData.tableIdName}<#list fieldData.fields as item>,${item.tableName}</#list>
-		from ${fieldData.tableName}
-		 WHERE ${whereSentence}
-	</select>
+	<select id="selectListMap" resultType="java.util.Map" parameterType="com.hx.mybatisTool.SqlParam" >
+    		${sqlSentence}
+    	</select>
+	<select id="selectOne" resultType="${packageEntityName}.${entityName}" parameterType="com.hx.mybatisTool.SqlParam" >
+    	${sqlSentence} order by ${fieldData.tableIdName} desc LIMIT 1
+    </select>
+    <select id="selectOneMap" resultType="java.util.Map" parameterType="com.hx.mybatisTool.SqlParam" >
+        	${sqlSentence} order by ${fieldData.tableIdName} desc LIMIT 1
+    </select>
 	<select id="selectCount" resultType="int" parameterType="com.hx.mybatisTool.SqlParam" >
     		select
     			COUNT(*)
     		from ${fieldData.tableName}
     			WHERE ${whereSentence}
-    	</select>
-	<select id="selectOne" resultMap="BaseResultMap" parameterType="com.hx.mybatisTool.SqlParam" >
-		select 
-			${fieldData.tableIdName}<#list fieldData.fields as item><#if item.isBlob==0>,${item.tableName}</#if></#list>
-		from ${fieldData.tableName}
-		    WHERE ${whereSentence} order by ${fieldData.tableIdName} desc
-			LIMIT 1
-	</select>
-	<select id="selectOneBlob" resultMap="BaseResultMap" parameterType="com.hx.mybatisTool.SqlParam" >
-		select 
-			${fieldData.tableIdName}<#list fieldData.fields as item>,${item.tableName}</#list>
-		from ${fieldData.tableName}
-			WHERE ${whereSentence} order by ${fieldData.tableIdName} desc
-			LIMIT 1
-	</select>
-	<select id="selectOneByKey" resultMap="BaseResultMap" parameterType="java.lang.Object" >
+    </select>
+	<select id="selectOneByKey" resultType="${packageEntityName}.${entityName}" parameterType="java.lang.Object" >
 		select 
 			${fieldData.tableIdName}<#list fieldData.fields as item>,${item.tableName}</#list>
 		from ${fieldData.tableName}
 		WHERE ${fieldData.tableIdName} = ${fieldData.valueData}
 	</select>
-	<select id="selectOneByKeyBlob" resultMap="BaseResultMap" parameterType="java.lang.Object" >
+	<select id="selectOneByKeyBlob" resultType="${packageEntityName}.${entityName}" parameterType="java.lang.Object" >
 		select 
 			${fieldData.tableIdName}<#list fieldData.fields as item>,${item.tableName}</#list>
 		from ${fieldData.tableName}
 		WHERE ${fieldData.tableIdName} = ${fieldData.valueData}
 	</select>
 	<update id="updateWhere" parameterType="com.hx.mybatisTool.SqlParam">
-		update ${fieldData.tableName}
-			SET ${updateSentence}
+		${updateSentence}
 	</update>
 	<update id="updateAll" parameterType="${packageEntityName}.${entityName}">
 		update ${fieldData.tableName}

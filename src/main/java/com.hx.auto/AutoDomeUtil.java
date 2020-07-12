@@ -2,6 +2,8 @@ package com.hx.auto;
 
 import com.hx.auto.common.UrlData;
 
+import java.util.Map;
+
 /**
  * 自动生成工具 
  * 2019-08-29
