@@ -3,6 +3,7 @@ package ${DAOPackageName};
 import java.util.List;
 import java.util.Map;
 import com.hx.mybatisTool.SqlParam;
+import com.hx.mybatisTool.SqlSentence;
 import ${entityPackageName}.${entityName};
 
 public interface ${entityName}Mapper {
@@ -11,13 +12,13 @@ public interface ${entityName}Mapper {
     /**查询条数*/
     int selectCount(SqlParam sqlParam);
     /**查询列表，返回实体类的List*/
-    List<${entityName}> selectList(SqlParam sqlParam);
+    List<${entityName}> selectList(SqlSentence sqlParam);
     /**查询列表，返回Map的List*/
-    List<Map<String,Object>> selectListMap(SqlParam sqlParam);
+    List<Map<String,Object>> selectListMap(SqlSentence sqlParam);
     /**查询，返回单个实体*/
-    ${entityName} selectOne(SqlParam sqlParam);
+    ${entityName} selectOne(SqlSentence sqlParam);
     /**查询，返回单个map*/
-    Map<String,Object> selectOneMap(SqlParam sqlParam);
+    Map<String,Object> selectOneMap(SqlSentence sqlParam);
     /**查询，返回实体类没有大数据的*/
     ${entityName} selectOneByKey(Object object);
     /**查询，返回实体类有大数据的*/

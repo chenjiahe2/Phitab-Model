@@ -10,7 +10,9 @@ import ${daoPack}.${classNameUP}Mapper;
 import ${packageName}.${classNameUP};
 import ${servicePack}.${classNameUP}Service;
 import com.hx.mybatisTool.SqlParam;
+import com.hx.mybatisTool.SqlSentence;
 import java.util.List;
+import java.util.Map;
 
 @Transactional
 @Service
@@ -19,28 +21,28 @@ public class ${classNameUP}ServiceImpl implements ${classNameUP}Service {
     @Resource
     private ${classNameUP}Mapper ${className}Mapper;
 
-    /**查询列表，大数据类型不拿取*/
+    /**查询列表*/
     @Override
-    public List<${classNameUP}> selectList(SqlParam sqlParam) {
+    public List<${classNameUP}> selectList(SqlSentence sqlParam) {
         return ${className}Mapper.selectList(sqlParam);
     }
 
-    /**查询列表，大数据类型拿取*/
+    /**查询列表*/
     @Override
-    public List<${classNameUP}> selectListBlob(SqlParam sqlParam) {
-        return ${className}Mapper.selectListBlob(sqlParam);
+    public List<Map<String,Object>> selectListMap(SqlSentence sqlParam) {
+        return ${className}Mapper.selectListMap(sqlParam);
     }
 
-    /**查询单个，大数据不拿取*/
+    /**查询单个*/
     @Override
-    public ${classNameUP} selectOne(SqlParam sqlParam) {
+    public ${classNameUP} selectOne(SqlSentence sqlParam) {
         return ${className}Mapper.selectOne(sqlParam);
     }
 
-    /**查询单个，大数据拿取*/
+    /**查询单个*/
     @Override
-    public ${classNameUP} selectOneBlob(SqlParam sqlParam) {
-        return ${className}Mapper.selectOneBlob(sqlParam);
+    public Map<String,Object> selectOneMap(SqlSentence sqlParam) {
+        return ${className}Mapper.selectOneMap(sqlParam);
     }
 
     /**查询单个，大数据不拿取*/
@@ -57,7 +59,7 @@ public class ${classNameUP}ServiceImpl implements ${classNameUP}Service {
 
     /**新增*/
 	@Override
-	public void add(${classNameUP} ${className}) {
+	public void insert(${classNameUP} ${className}) {
 		int count = ${className}Mapper.insert(${className});
 		if(count != 1) {
 			throw new TipsException("新增失败！");

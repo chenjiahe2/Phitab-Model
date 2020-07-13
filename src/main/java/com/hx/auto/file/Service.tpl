@@ -2,7 +2,9 @@ package ${servicePack};
 
 import ${packageName}.${classNameUP};
 import com.hx.mybatisTool.SqlParam;
+import com.hx.mybatisTool.SqlSentence;
 import java.util.List;
+import java.util.Map;
 
 public interface ${classNameUP}Service {
 
@@ -10,13 +12,13 @@ public interface ${classNameUP}Service {
 
     void insert(${classNameUP} ${className});
 
-    List<${classNameUP}> selectList(SqlParam sqlParam);
+    List<${classNameUP}> selectList(SqlSentence sqlParam);
 
-    List<Map<String,Object>> selectListMap(SqlParam sqlParam);
+    List<Map<String,Object>> selectListMap(SqlSentence sqlParam);
 
-    ${classNameUP} selectOne(SqlParam sqlParam);
+    ${classNameUP} selectOne(SqlSentence sqlParam);
 
-    ${classNameUP} selectOneBlob(SqlParam sqlParam);
+    Map<String,Object> selectOneMap(SqlSentence sqlParam);
 
     ${classNameUP} selectOneByKey(Object object);
 

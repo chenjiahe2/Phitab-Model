@@ -3,6 +3,7 @@ package ${DAOPackageName};
 import java.util.List;
 import java.util.Map;
 import com.hx.mybatisTool.SqlParam;
+import com.hx.mybatisTool.SqlSentence;
 import ${entityPackageName}.${entityName};
 
 public interface ${entityName}Mapper {
