@@ -23,16 +23,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    values (${fieldData.entityIdData}<#list fieldData.fields as item>,${item.mybatisName}</#list>)
 	</insert>
 	<select id="selectList" resultType="${packageEntityName}.${entityName}" parameterType="com.hx.mybatisTool.SqlParam" >
-		${whereSentence}
+		${sqlSentence}
 	</select>
 	<select id="selectListMap" resultType="java.util.Map" parameterType="com.hx.mybatisTool.SqlParam" >
-    		${whereSentence}
+    		${sqlSentence}
     	</select>
 	<select id="selectOne" resultType="${packageEntityName}.${entityName}" parameterType="com.hx.mybatisTool.SqlParam" >
-    	${whereSentence} order by ${fieldData.tableIdName} desc LIMIT 1
+    	${sqlSentence} order by ${fieldData.tableIdName} desc LIMIT 1
     </select>
     <select id="selectOneMap" resultType="java.util.Map" parameterType="com.hx.mybatisTool.SqlParam" >
-        	${whereSentence} order by ${fieldData.tableIdName} desc LIMIT 1
+        	${sqlSentence} order by ${fieldData.tableIdName} desc LIMIT 1
     </select>
 	<select id="selectCount" resultType="int" parameterType="com.hx.mybatisTool.SqlParam" >
     		select
@@ -40,13 +40,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     		from ${fieldData.tableName}
     			WHERE ${whereSentence}
     </select>
-	<select id="selectOneByKey" resulType="${packageEntityName}.${entityName}" parameterType="java.lang.Object" >
+	<select id="selectOneByKey" resultType="${packageEntityName}.${entityName}" parameterType="java.lang.Object" >
 		select 
 			${fieldData.tableIdName}<#list fieldData.fields as item>,${item.tableName}</#list>
 		from ${fieldData.tableName}
 		WHERE ${fieldData.tableIdName} = ${fieldData.valueData}
 	</select>
-	<select id="selectOneByKeyBlob" resulType="${packageEntityName}.${entityName}" parameterType="java.lang.Object" >
+	<select id="selectOneByKeyBlob" resultType="${packageEntityName}.${entityName}" parameterType="java.lang.Object" >
 		select 
 			${fieldData.tableIdName}<#list fieldData.fields as item>,${item.tableName}</#list>
 		from ${fieldData.tableName}

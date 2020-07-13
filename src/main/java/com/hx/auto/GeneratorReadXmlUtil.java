@@ -106,6 +106,8 @@ public class GeneratorReadXmlUtil {
 		noCustomIds.add("deleteById");
 		noCustomIds.add("selectCount");
 		noCustomIds.add("Insert_Values_All");
+		noCustomIds.add("selectListMap");
+		noCustomIds.add("selectOneMap");
 		if (noCustomIds.contains(id)){
 			custom = false;
 		}
