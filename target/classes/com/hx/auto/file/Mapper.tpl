@@ -22,16 +22,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    insert into ${fieldData.tableName} (${fieldData.tableIdName}<#list fieldData.fields as item>,${item.tableName}</#list>)
 	    values (${fieldData.entityIdData}<#list fieldData.fields as item>,${item.mybatisName}</#list>)
 	</insert>
-	<select id="selectList" resultType="${packageEntityName}.${entityName}" parameterType="com.hx.mybatisTool.SqlSentence" >
+	<select id="selectList" resultType="${packageEntityName}.${entityName}" parameterType="com.hx.mybatisTool.SqlParam" >
 		${sqlSentence}
 	</select>
-	<select id="selectListMap" resultType="java.util.Map" parameterType="com.hx.mybatisTool.SqlSentence" >
+	<select id="selectListMap" resultType="java.util.Map" parameterType="com.hx.mybatisTool.SqlParam" >
     		${sqlSentence}
     	</select>
-	<select id="selectOne" resultType="${packageEntityName}.${entityName}" parameterType="com.hx.mybatisTool.SqlSentence" >
+	<select id="selectOne" resultType="${packageEntityName}.${entityName}" parameterType="com.hx.mybatisTool.SqlParam" >
     	${sqlSentence} order by ${fieldData.tableIdName} desc LIMIT 1
     </select>
-    <select id="selectOneMap" resultType="java.util.Map" parameterType="com.hx.mybatisTool.SqlSentence" >
+    <select id="selectOneMap" resultType="java.util.Map" parameterType="com.hx.mybatisTool.SqlParam" >
         	${sqlSentence} order by ${fieldData.tableIdName} desc LIMIT 1
     </select>
 	<select id="selectCount" resultType="int" parameterType="com.hx.mybatisTool.SqlParam" >

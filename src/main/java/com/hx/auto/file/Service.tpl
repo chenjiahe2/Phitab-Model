@@ -6,9 +6,13 @@ import java.util.List;
 
 public interface ${classNameUP}Service {
 
+    int selectCount(SqlParam sqlParam);
+
+    void insert(${classNameUP} ${className});
+
     List<${classNameUP}> selectList(SqlParam sqlParam);
 
-    List<${classNameUP}> selectListBlob(SqlParam sqlParam);
+    List<Map<String,Object>> selectListMap(SqlParam sqlParam);
 
     ${classNameUP} selectOne(SqlParam sqlParam);
 
@@ -17,8 +21,6 @@ public interface ${classNameUP}Service {
     ${classNameUP} selectOneByKey(Object object);
 
     ${classNameUP} selectOneByKeyBlob(Object object);
-
-	void add(${classNameUP} ${className});
     
 	void updateAll(${classNameUP} ${className});
 
@@ -26,6 +28,5 @@ public interface ${classNameUP}Service {
     
 	void deleteOne(String delId);
 
-	int selectCount(SqlParam sqlParam);
 
 }
