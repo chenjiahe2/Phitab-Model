@@ -8,6 +8,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
 import com.hx.common.CommonInit;
+import com.hx.mybatisTool.SqlSentence;
 import ${DAOPackageName}.${entityName}Mapper;
 import ${entityPackageName}.${entityName};
 import ${servicePackageName}.${entityName}Service;
@@ -37,15 +38,16 @@ public class ${entityName}Controller extends CommonInit{
         }
         //分页插件
         PageHelper.startPage(pageNum,rowCount);
-        List<${entityName}> ${entityNameSmall}s = service.selectList(sqlParam);
-        PageInfo<${entityName}> pageInfo = new PageInfo<${entityName}>(${entityNameSmall}s);
+        sqlSentence = new SqlSentence();
+        List<${entityName}> ${entityNameSmall}s = service.selectList(sqlSentence);
+        pageInfo = new PageInfo<${entityName}>(${entityNameSmall}s);
 		return Result.success(pageInfo);
     }
 	
 	/**新增*/
 	@RequestMapping("/add")
     public Result addData(${entityName} ${entityNameSmall}) {
-		service.add(${entityNameSmall});
+		service.insert(${entityNameSmall});
 		return Result.success();
     }
 	
